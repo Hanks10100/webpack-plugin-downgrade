@@ -1,0 +1,17 @@
+{
+  "name": "webpack-plugin-downgrade",
+  "version": "0.1.0",
+  "description": "Weex downgrade plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "weex",
+    "downgrade"
+  ],
+  "author": "Hanks <zhanghan.me@gmail.com>",
+  "license": "MIT"
+}
