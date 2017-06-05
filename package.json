@@ -4,7 +4,8 @@
   "description": "Weex downgrade plugin",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js",
+    "build": "rollup --config rollup.config.js",
+    "dev": "rollup --watch --config rollup.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -16,12 +17,15 @@
   "author": "Hanks <zhanghan.me@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@weex-project/downgrade": "^1.0.1"
+    "@weex-project/downgrade": "^1.0.1",
+    "webpack": "^2.6.1",
+    "webpack-sources": "^1.0.1"
   },
   "devDependencies": {
     "buble": "^0.15.2",
-    "buble-loader": "^0.4.1",
-    "uglifyjs-webpack-plugin": "^0.4.3",
-    "webpack": "^2.6.1"
+    "rollup-plugin-buble": "^0.15.0",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-watch": "^3.2.2"
   }
 }
