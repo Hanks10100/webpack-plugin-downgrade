@@ -1,6 +1,5 @@
 import Downgrade from '@weex-project/downgrade'
 import { ConcatSource } from 'webpack-sources'
-import ModuleFilenameHelpers from 'webpack/lib/ModuleFilenameHelpers'
 
 const defaultCondition = {
 

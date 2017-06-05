@@ -6,6 +6,7 @@ export default {
   entry: 'index.es6.js',
   format: 'cjs',
   dest: 'index.js',
+  external: ['crypto', 'webpack', 'webpack-sources'],
   plugins: [
     nodeResolve({ jsnext: true, main: true }),
     commonjs(),
