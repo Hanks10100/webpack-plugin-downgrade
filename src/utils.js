@@ -20,7 +20,7 @@ export function generateConditionCode (condition) {
     type: 'space',
     size: 2
   })
-  return `Downgrade.condition(\n${indent(params)}\n);\n`
+  return `condition(\n${indent(params)}\n);\n`
 }
 
 
