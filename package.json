@@ -4,8 +4,12 @@
   "description": "Weex downgrade plugin",
   "main": "index.js",
   "scripts": {
-    "build": "rollup --config rollup.config.js",
-    "dev": "rollup --watch --config rollup.config.js",
+    "build": "npm run build:downgrade && npm run build:plugin",
+    "build:downgrade": "rollup -c build/rollup.downgrade.config.js",
+    "prebuild:plugin": "rollup -c build/rollup.downgrade.plugin.config.js",
+    "build:plugin": "rollup -c build/rollup.plugin.config.js",
+    "dev:downgrade": "rollup -w -c build/rollup.downgrade.config.js",
+    "dev:plugin": "rollup -w -c build/rollup.plugin.config.js",
     "test": "webpack --config examples/webpack.config.js"
   },
   "keywords": [
@@ -29,6 +33,7 @@
     "rollup-plugin-buble": "^0.15.0",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^2.0.1",
     "rollup-watch": "^3.2.2",
     "weex-loader": "^0.4.5"
   }
