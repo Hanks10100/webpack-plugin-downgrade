@@ -3,8 +3,6 @@ var path = require('path')
 var webpack = require('webpack')
 var DowngradePlugin = require('../plugin')
 
-console.log(DowngradePlugin)
-
 module.exports = {
   entry: path.join(__dirname, 'entry.js'),
   output: {

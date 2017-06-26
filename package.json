@@ -10,7 +10,7 @@
     "build:plugin": "rollup -c build/rollup.plugin.config.js",
     "dev:downgrade": "rollup -w -c build/rollup.downgrade.config.js",
     "dev:plugin": "rollup -w -c build/rollup.plugin.config.js",
-    "test": "webpack --config examples/webpack.config.js"
+    "test": "npm run build:plugin && webpack --config examples/webpack.config.js"
   },
   "repository": {
     "type": "git",
