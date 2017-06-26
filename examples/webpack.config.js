@@ -1,7 +1,7 @@
 // webpack.config.js
 var path = require('path')
 var webpack = require('webpack')
-var DowngradePlugin = require('../index.js')
+var DowngradePlugin = require('../packages/plugin')
 
 console.log(DowngradePlugin)
 
