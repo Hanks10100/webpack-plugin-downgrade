@@ -1,23 +1,9 @@
 import fs from 'fs'
 import path from 'path'
 import { ConcatSource } from 'webpack-sources'
-import { readCodesSync } from './utils.js'
+import { generateDowngradeCode } from './utils.js'
 
 const defaultCondition = {
-}
-
-function generateDowngradeCode (options) {
-  const condition = options.condition || defaultCondition
-  return '// TODO: generate downgrade codes here' +
-`
-;(function(){
-  /* npm downgrade nodule */
-  ${readCodesSync()}
-
-  /* downgrade config */
-})();
-
-`
 }
 
 export default class WeexDowngradePlugin {
