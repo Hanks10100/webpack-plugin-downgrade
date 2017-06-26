@@ -1,7 +1,7 @@
 {
-  "name": "webpack-plugin-downgrade",
-  "version": "0.1.0",
-  "description": "Weex downgrade plugin",
+  "name": "@weex-project/downgrade",
+  "version": "1.1.0",
+  "description": "Weex downgrade to Web module",
   "main": "index.js",
   "scripts": {
     "build": "npm run build:downgrade && npm run build:plugin",
@@ -12,29 +12,29 @@
     "dev:plugin": "rollup -w -c build/rollup.plugin.config.js",
     "test": "webpack --config examples/webpack.config.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weexteam/downgrade.git"
+  },
   "keywords": [
-    "webpack",
-    "plugin",
     "weex",
+    "web",
     "downgrade"
   ],
-  "author": "Hanks <zhanghan.me@gmail.com>",
+  "author": "Isken Huang",
   "license": "MIT",
-  "dependencies": {
-    "@weex-project/downgrade": "^1.0.1",
-    "json-format": "^1.0.1",
-    "webpack": "^2.6.1",
-    "webpack-sources": "^1.0.1"
-  },
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.0",
     "buble": "^0.15.2",
+    "json-format": "^1.0.1",
     "rollup-plugin-buble": "^0.15.0",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^2.0.1",
     "rollup-watch": "^3.2.2",
+    "webpack": "^2.6.1",
+    "webpack-sources": "^1.0.1",
     "weex-loader": "^0.4.5"
   }
 }

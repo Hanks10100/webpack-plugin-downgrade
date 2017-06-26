@@ -1,3 +1,7 @@
 .*
-*.es6.js
+
+src
 test
+build
+examples
+plugin
