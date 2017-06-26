@@ -1,21 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-// import Downgrade from '@weex-project/downgrade'
 import { ConcatSource } from 'webpack-sources'
-
-function readDowngradeFunction () {
-  try {
-    return fs.readFileSync('./downgrade.js', 'utf8')
-  } catch(e) {
-    console.log('Error:', e.stack)
-    return '/* invalid downgrade code */'
-  }
-}
-
-function indent (codes) {
-  return codes.replace(/\n/g, '\n  ')
-}
-
+import { indent, readCodesSync } from './utils.js'
 
 const defaultCondition = {
 }
@@ -26,7 +12,7 @@ function generateDowngradeCode (options) {
 `
 ;(function(){
   /* npm downgrade nodule */
-  ${indent(readDowngradeFunction())}
+  ${indent(readCodesSync())}
 
   /* downgrade config */
 })();
