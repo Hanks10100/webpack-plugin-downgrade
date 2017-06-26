@@ -1,16 +1,33 @@
 'use strict';
 
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var fs = _interopDefault(require('fs'));
 var path = require('path');
 var webpackSources = require('webpack-sources');
 
 // import Downgrade from '@weex-project/downgrade'
+function readDowngradeFunction () {
+  try {
+    return fs.readFileSync('./downgrade.js', 'utf8')
+  } catch(e) {
+    console.log('Error:', e.stack)
+    return '/* invalid downgrade code */'
+  }
+}
+
+function indent (codes) {
+  return codes.replace(/\n/g, '\n  ')
+}
+
+
 var defaultCondition = {
 }
 
 function generateDowngradeCode (options) {
   var condition = options.condition || defaultCondition
   return '// TODO: generate downgrade codes here' +
-"\n;(function(){\n  /* npm downgrade nodule */\n  /* downgrade config */\n})();\n\n"
+"\n;(function(){\n  /* npm downgrade nodule */\n  " + (indent(readDowngradeFunction())) + "\n\n  /* downgrade config */\n})();\n\n"
 }
 
 var WeexDowngradePlugin = function WeexDowngradePlugin (options) {
