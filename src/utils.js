@@ -26,15 +26,14 @@ export function generateConditionCode (condition) {
 
 export function generateDowngradeCode (options) {
   const condition = options.condition || defaultCondition
-  return '// TODO: generate downgrade codes here' +
+  return '/* Weex downgrade configs */' +
 `
 ;(function(){
   /* npm downgrade nodule */
 ${indent(readCodesSync())}
 
-  /* downgrade config */
+  /* downgrade condition */
 ${indent(generateConditionCode(condition))}
-
 })();
 
 `

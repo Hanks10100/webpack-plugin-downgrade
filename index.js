@@ -113,8 +113,8 @@ function generateConditionCode (condition) {
 
 function generateDowngradeCode (options) {
   var condition = options.condition || defaultCondition
-  return '// TODO: generate downgrade codes here' +
-"\n;(function(){\n  /* npm downgrade nodule */\n" + (indent(readCodesSync())) + "\n\n  /* downgrade config */\n" + (indent(generateConditionCode(condition))) + "\n\n})();\n\n"
+  return '/* Weex downgrade configs */' +
+"\n;(function(){\n  /* npm downgrade nodule */\n" + (indent(readCodesSync())) + "\n\n  /* downgrade condition */\n" + (indent(generateConditionCode(condition))) + "\n})();\n\n"
 }
 
 var WeexDowngradePlugin = function WeexDowngradePlugin (options) {

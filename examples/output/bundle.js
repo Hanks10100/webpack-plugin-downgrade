@@ -1,9 +1,36 @@
 // { "framework": "Vue" }
 
-// TODO: generate downgrade codes----- here
+/* Weex downgrade configs */
 ;(function(){
   /* npm downgrade nodule */
-  /* downgrade config */
+  ;(function(){
+    console.log('load downgrade lib')
+  })();
+  
+
+  /* downgrade condition */
+  Downgrade.condition(
+    {
+      "ios": {
+        "osVersion": ">1.0",
+        "appVersion": ">1.0.0",
+        "weexVersion": ">1",
+        "deviceModel": [
+          "iPhone5,1"
+        ]
+      },
+      "android": {
+        "osVersion": ">1.0",
+        "appVersion": ">1.0.0",
+        "weexVersion": ">1",
+        "deviceModel": [
+          "G-2PW2100"
+        ]
+      }
+    }
+  );
+  
+
 })();
 
 /******/ (function(modules) { // webpackBootstrap
