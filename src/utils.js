@@ -1,12 +1,15 @@
 import fs from 'fs'
+import path from 'path'
 import jsonFormat from 'json-format'
+
+const defaultFilePath = path.join(__dirname, './downgrade.js')
 
 export function indent (code, len = 2) {
   const space = (new Array(len + 1)).join(' ')
   return space + code.replace(/\n/g, '\n' + space)
 }
 
-export function readCodesSync (filePath = './downgrade.js') {
+export function readCodesSync (filePath = defaultFilePath) {
   try {
     return fs.readFileSync(filePath, 'utf8')
   } catch(e) {
@@ -20,7 +23,7 @@ export function generateConditionCode (condition) {
     type: 'space',
     size: 2
   })
-  return `condition(\n${indent(params)}\n);\n`
+  return `WeexDowngrade.condition(\n${indent(params)}\n);\n`
 }
 
 
