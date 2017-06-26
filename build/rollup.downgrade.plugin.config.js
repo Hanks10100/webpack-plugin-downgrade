@@ -7,7 +7,7 @@ export default {
   moduleName: 'WeexDowngrade',
   entry: 'src/downgrade.js',
   format: 'umd',
-  dest: 'packages/plugin/downgrade.js',
+  dest: 'plugin/downgrade.js',
   plugins: [
     nodeResolve({ jsnext: true, main: true }),
     commonjs(),
