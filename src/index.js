@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { ConcatSource } from 'webpack-sources'
-import { indent, readCodesSync } from './utils.js'
+import { readCodesSync } from './utils.js'
 
 const defaultCondition = {
 }
@@ -12,7 +12,7 @@ function generateDowngradeCode (options) {
 `
 ;(function(){
   /* npm downgrade nodule */
-  ${indent(readCodesSync())}
+  ${readCodesSync()}
 
   /* downgrade config */
 })();
