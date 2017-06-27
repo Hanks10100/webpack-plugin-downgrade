@@ -3,9 +3,12 @@
 ## Usage
 
 ```js
+// webpack.config.js
 var DowngradePlugin = require('webpack-plugin-downgrade')
 
 module.exports = {
+  entry: '...',
+  output: '...',
   plugins: [
     new DowngradePlugin({
       condition: {
