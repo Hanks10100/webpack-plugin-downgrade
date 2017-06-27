@@ -6,8 +6,8 @@ var DowngradePlugin = require('../plugin')
 module.exports = {
   entry: path.join(__dirname, 'entry.js'),
   output: {
-    filename: 'bundle.js',
-    path: path.join(__dirname, 'output')
+    filename: 'output.js',
+    path: path.join(__dirname)
   },
   module: {
     rules: [
