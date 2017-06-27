@@ -97,7 +97,8 @@ function readCodesSync (filePath) {
   if ( filePath === void 0 ) filePath = defaultFilePath;
 
   try {
-    return fs.readFileSync(filePath, 'utf8')
+    var code = fs.readFileSync(filePath, 'utf8')
+    return '/* npm downgrade module */\n' + code
   } catch(e) {
     console.log('Error:', e.stack)
     return '/* invalid downgrade code */'
@@ -109,14 +110,19 @@ function generateConditionCode (condition) {
     type: 'space',
     size: 2
   })
-  return ("WeexDowngrade.condition(\n" + (indent(params)) + "\n);\n")
+  return "/* downgrade condition */\n" +
+    "WeexDowngrade.condition(\n" + (indent(params)) + "\n);"
 }
 
 
 function generateDowngradeCode (options) {
   var condition = options.condition || defaultCondition
-  return '/* Weex downgrade configs */' +
-"\n;(function(){\n  /* npm downgrade nodule */\n" + (indent(readCodesSync())) + "\n\n  /* downgrade condition */\n" + (indent(generateConditionCode(condition))) + "\n})();\n\n"
+  // TODO: check condition format
+  return '\n/* Weex downgrade configs */\n' +
+    ';(function(){\n' +
+      indent(readCodesSync(defaultFilePath)) + '\n\n' +
+      indent(generateConditionCode(condition)) + '\n' +
+    '})();\n\n'
 }
 
 var WeexDowngradePlugin = function WeexDowngradePlugin (options) {

@@ -11,7 +11,8 @@ export function indent (code, len = 2) {
 
 export function readCodesSync (filePath = defaultFilePath) {
   try {
-    return fs.readFileSync(filePath, 'utf8')
+    const code = fs.readFileSync(filePath, 'utf8')
+    return '/* npm downgrade module */\n' + code
   } catch(e) {
     console.log('Error:', e.stack)
     return '/* invalid downgrade code */'
@@ -23,21 +24,17 @@ export function generateConditionCode (condition) {
     type: 'space',
     size: 2
   })
-  return `WeexDowngrade.condition(\n${indent(params)}\n);\n`
+  return `/* downgrade condition */\n` +
+    `WeexDowngrade.condition(\n${indent(params)}\n);`
 }
 
 
 export function generateDowngradeCode (options) {
   const condition = options.condition || defaultCondition
-  return '/* Weex downgrade configs */' +
-`
-;(function(){
-  /* npm downgrade nodule */
-${indent(readCodesSync())}
-
-  /* downgrade condition */
-${indent(generateConditionCode(condition))}
-})();
-
-`
+  // TODO: check condition format
+  return '\n/* Weex downgrade configs */\n' +
+    ';(function(){\n' +
+      indent(readCodesSync(defaultFilePath)) + '\n\n' +
+      indent(generateConditionCode(condition)) + '\n' +
+    '})();\n\n'
 }
