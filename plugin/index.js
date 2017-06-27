@@ -114,14 +114,21 @@ function generateConditionCode (condition) {
     "WeexDowngrade.condition(\n" + (indent(params)) + "\n);"
 }
 
+function generateForceCode (condition) {
+  return "/* force downgrade */\nWeexDowngrade.force();"
+}
 
 function generateDowngradeCode (options) {
-  var condition = options.condition || defaultCondition
   // TODO: check condition format
+  var condition = options.condition || defaultCondition
+  var downgradeCode = (options.force === true)
+    ? generateForceCode()
+    : generateConditionCode(condition)
+
   return '\n/* Weex downgrade configs */\n' +
     ';(function(){\n' +
       indent(readCodesSync(defaultFilePath)) + '\n\n' +
-      indent(generateConditionCode(condition)) + '\n' +
+      indent(downgradeCode) + '\n' +
     '})();\n\n'
 }
 

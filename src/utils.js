@@ -28,13 +28,21 @@ export function generateConditionCode (condition) {
     `WeexDowngrade.condition(\n${indent(params)}\n);`
 }
 
+export function generateForceCode (condition) {
+  return `/* force downgrade */\nWeexDowngrade.force();`
+}
 
 export function generateDowngradeCode (options) {
-  const condition = options.condition || defaultCondition
   // TODO: check condition format
+  const condition = options.condition || defaultCondition
+
+  const downgradeCode = (options.force === true)
+    ? generateForceCode()
+    : generateConditionCode(condition)
+
   return '\n/* Weex downgrade configs */\n' +
     ';(function(){\n' +
       indent(readCodesSync(defaultFilePath)) + '\n\n' +
-      indent(generateConditionCode(condition)) + '\n' +
+      indent(downgradeCode) + '\n' +
     '})();\n\n'
 }
